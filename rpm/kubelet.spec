@@ -156,12 +156,12 @@ install -p -m 644 -T kubelet.env %{buildroot}%{_sysconfdir}/sysconfig/kubelet
 %endif
 
 
-install -m 755 -d %{buildroot}/opt/cni/bin
+install -m 755 -d %{buildroot}%{_libexecdir}/cni/
 # bin directory from cni-plugins-%{ARCH}-%{CNI_VERSION}.tgz with a list of cni plugins (among other things)
 %if %{KUBE_SEMVER} >= %{semver 1 9 0}
-mv cni-plugins/* %{buildroot}/opt/cni/bin/
+mv cni-plugins/* %{buildroot}/%{_libexecdir}/cni
 %else
-mv cni-plugins/bin/ %{buildroot}/opt/cni/
+mv cni-plugins/bin/ %{buildroot}/%{_libexecdir}/cni
 %endif
 
 %files
