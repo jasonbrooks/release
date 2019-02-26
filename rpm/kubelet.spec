@@ -174,7 +174,8 @@ mv cni-plugins/bin/ %{buildroot}/%{_libexecdir}/cni
 %endif
 
 %files -n kubernetes-cni
-/opt/cni
+%dir %{_libexecdir}/cni
+%{_libexecdir}/cni/*
 
 %files -n kubectl
 %{_bindir}/kubectl
